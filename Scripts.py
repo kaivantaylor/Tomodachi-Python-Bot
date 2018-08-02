@@ -15,11 +15,13 @@ command = commands.Bot(command_prefix = "!") # All prefix starts with "!"
 
 #------------------------------------- channel variables ------------------------------------------------#
 
-channel_mode = 3 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
+channel_mode = 9 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
+token = "NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0"
 
 general_channel = discord.Object(id='471503386848788482')
 spam_channel = discord.Object(id='471509338834337803')
 dev_channel = discord.Object(id='474468483749380096')
+chat_filter = ["FUCK","SHIT","BITCH","NIGGA","HOE","SLUT"] # Must be all CAPS
 
 #------------------------------------ client events -----------------------------------------------#
 
@@ -64,6 +66,9 @@ async def on_message(msg):
     if msg.content == "!kaivan": # Kaivan
         await client.send_message(channel, "Plz work on me later")
 
+    if msg.content == "!amanda": # Kaivan
+        await client.send_message(channel, "Is your name rose?")
+
     if msg.content == "!lettuce": # Kaivan
         await client.send_message(channel, "Why is a vegetable talking to me?")
         
@@ -71,16 +76,28 @@ async def on_message(msg):
         await client.send_message(channel, "Marty is gay. Heh, get it.")
         
     if msg.content == "!help": # Help
-        await client.send_message(channel, "! is the prefix for every command. Available commands: marty, hlaing, elijsha, kaivan, lettuce, joke, ping, chong, tomato, dev")
+        await client.send_message(channel, "! is the prefix for every command. Available commands: marty, hlaing, elijsha, kaivan, amanda, lettuce, joke, ping, chong, tomato, dev")
 
     #-------------- Developers only have these permissions below ---------------------#
         
     if msg.content == "!dev": # Dev
         if '474507060940242955' in [role.id for role in msg.author.roles]:
-            await client.send_message(channel, "! is the prefix for every command. Available commands: say, github")
+            await client.send_message(channel, "! is the prefix for every command. Available commands: say, github, nukebot")
         else:
             await client.send_message(channel, "Command for developers only.")
-        
+
+    if msg.content == "!nukechat": # Dev
+        if '474507060940242955' in [role.id for role in msg.author.roles]:
+            await client.send_message(msg.channel, 'Clearing messages...')
+            async for msg in client.logs_from(msg.channel):
+                await client.delete_message(msg)
+        else:
+            await client.send_message(channel, "Command for developers only.")
+            
+    if msg.content == "!nukebot": # Dev
+        if '474507060940242955' in [role.id for role in msg.author.roles]:
+            await client.logout()
+            
     if msg.content == "!github": # Github
         if '474507060940242955' in [role.id for role in msg.author.roles]:
             await client.send_message(channel, "https://github.com/speedykai/Tomodachi-Python-Bot")
@@ -93,8 +110,20 @@ async def on_message(msg):
             await client.send_message(channel," ".join(_saymsg[1:]))
         else:
             await client.send_message(channel, "Command for developers only.")
+
+    #-------------------------------- Message filters ---------------------------------#
+            
+    contents = msg.content.split(" ") # Searches every word that is inputted
+    for word in contents:
+        if word.upper() in chat_filter:
+            try:
+                userID = msg.author.id  
+                await client.delete_message(msg)
+                await client.send_message(spam_channel, "<@" + userID + "> **Nani?! Yamete (Stop)** ,that is a bad word!")
+            except discord.errors.NotFound:
+                return
             
 #-------------------------------- Client Run --------------------------------#
 
-client.run("NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0")
+client.run(token)
  
