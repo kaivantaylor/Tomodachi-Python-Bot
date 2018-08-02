@@ -23,43 +23,43 @@ async def on_message(msg):
 
     if msg.content.upper().startswith('!SAY'):
         _saymsg = msg.content.split(" ")
-        await client.send_message(dev_channel," ".join(_saymsg[1:]))
+        await client.send_message(general_channel," ".join(_saymsg[1:]))
 
     if msg.content.startswith('!ping'):
         userID = msg.author.id
-        await client.send_message(dev_channel, "<@" + userID + "> Pong!")
+        await client.send_message(general_channel, "<@" + userID + "> Pong!")
         
     if msg.content.startswith('!ching'):
         userID = msg.author.id
-        await client.send_message(dev_channel, "<@" + userID + "> Chong!")
+        await client.send_message(general_channel, "<@" + userID + "> Chong!")
 
     if msg.content.startswith('!tomato'):
         userID = msg.author.id
-        await client.send_message(dev_channel, "<@" + userID + "> tomato!")
+        await client.send_message(general_channel, "<@" + userID + "> tomato!")
     
     if msg.content == "!marty":
-        await client.send_message(dev_channel, "How's your garden today?")
+        await client.send_message(general_channel, "How's your garden today?")
     
     if msg.content == "!hlaing":
-        await client.send_message(dev_channel, "Such a fuckin weeb")
+        await client.send_message(general_channel, "Such a fuckin weeb")
 
     if msg.content == "!elijsha":
-        await client.send_message(dev_channel, "Sup mah nigga")
+        await client.send_message(general_channel, "Sup mah nigga")
 
     if msg.content == "!kaivan":
-        await client.send_message(dev_channel, "Plz work on me later")
+        await client.send_message(general_channel, "Plz work on me later")
         
     if msg.content == "!joke":
-        await client.send_message(dev_channel, "Marty is gay. Heh, get it.")
+        await client.send_message(general_channel, "Marty is gay. Heh, get it.")
         
     if msg.content == "!github":
-        await client.send_message(dev_channel, "https://github.com/speedykai/Tomodachi-Python-Bot")
+        await client.send_message(general_channel, "https://github.com/speedykai/Tomodachi-Python-Bot")
         
     if msg.content == "!dev":
-        await client.send_message(dev_channel, "! is the prefix for every command. Available commands: say, github")
+        await client.send_message(general_channel, "! is the prefix for every command. Available commands: say, github")
         
     if msg.content == "!help":
-        await client.send_message(dev_channel, "! is the prefix for every command. Available commands: marty, hlaing, elijsha, kaivan, joke, ping, chong, tomato")
+        await client.send_message(general_channel, "! is the prefix for every command. Available commands: marty, hlaing, elijsha, kaivan, joke, ping, chong, tomato")
 
 client.run("NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0")
  
