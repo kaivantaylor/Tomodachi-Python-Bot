@@ -17,6 +17,11 @@ async def on_ready():
 
 @client.event
 async def on_message(msg):
+
+    if msg.content.startswith('!ping'):
+        userID = msg.author.id
+        await client.send_message(msg.channel, "<@" + userID + "> Pong!")
+    
     if msg.content == "!marty":
         await client.send_message(msg.channel, "How's your garden today?")
     
@@ -29,10 +34,13 @@ async def on_message(msg):
     if msg.content == "!kaivan":
         await client.send_message(msg.channel, "Plz work on me later")
         
+    if msg.content == "!joke":
+        await client.send_message(msg.channel, "Hlaing is gay. Heh, get it.")
+        
     if msg.content == "!github":
         await client.send_message(msg.channel, "https://github.com/speedykai/Tomodachi-Python-Bot")
         
     if msg.content == "!help":
-        await client.send_message(msg.channel, "! is the prefix for every command. Available options: marty, hlaing, elijsha, kaivan, github")
+        await client.send_message(msg.channel, "! is the prefix for every command. Available options: marty, hlaing, elijsha, kaivan, joke, github, ping")
 
 client.run("NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0")
