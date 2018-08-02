@@ -15,7 +15,7 @@ command = commands.Bot(command_prefix = "!") # All prefix starts with "!"
 
 #------------------------------------- channel variables ------------------------------------------------#
 
-channel_mode = 0 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
+channel_mode = 3 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
 
 general_channel = discord.Object(id='471503386848788482')
 spam_channel = discord.Object(id='471509338834337803')
@@ -33,15 +33,13 @@ else:
 @client.event # Used for boot of server
 async def on_ready():
     print("Kai Bot is on the server!")
-    await client.send_message(channel, "Kaerimasu. Kai Bot is online!")
+    await client.send_message(dev_channel, "Kaerimasu. Kai Bot is online!")
 
 @client.event # Used for specific message instances in server
 async def on_message(msg):
-    
-    if msg.content.upper().startswith('!SAY'): # Say 
-        _saymsg = msg.content.split(" ")
-        await client.send_message(channel," ".join(_saymsg[1:]))
 
+    #-------- All users have these permissions below -------------#
+    
     if msg.content.startswith('!ping'): # Ping
         userID = msg.author.id
         await client.send_message(channel, "<@" + userID + "> Pong!")
@@ -72,15 +70,30 @@ async def on_message(msg):
     if msg.content == "!joke": # Joke
         await client.send_message(channel, "Marty is gay. Heh, get it.")
         
-    if msg.content == "!github": # Github
-        await client.send_message(channel, "https://github.com/speedykai/Tomodachi-Python-Bot")
+    if msg.content == "!help": # Help
+        await client.send_message(channel, "! is the prefix for every command. Available commands: marty, hlaing, elijsha, kaivan, lettuce, joke, ping, chong, tomato, dev")
+
+    #-------------- Developers only have these permissions below ---------------------#
         
     if msg.content == "!dev": # Dev
-        await client.send_message(channel, "! is the prefix for every command. Available commands: say, github")
+        if '474507060940242955' in [role.id for role in msg.author.roles]:
+            await client.send_message(channel, "! is the prefix for every command. Available commands: say, github")
+        else:
+            await client.send_message(channel, "Command for developers only.")
         
-    if msg.content == "!help": # Help
-        await client.send_message(channel, "! is the prefix for every command. Available commands: marty, hlaing, elijsha, kaivan, lettuce, joke, ping, chong, tomato")
+    if msg.content == "!github": # Github
+        if '474507060940242955' in [role.id for role in msg.author.roles]:
+            await client.send_message(channel, "https://github.com/speedykai/Tomodachi-Python-Bot")
+        else:
+            await client.send_message(channel, "Command for developers only.")
 
+    if msg.content.upper().startswith('!SAY'): # Say
+        if '474507060940242955' in [role.id for role in msg.author.roles]:
+            _saymsg = msg.content.split(" ")
+            await client.send_message(channel," ".join(_saymsg[1:]))
+        else:
+            await client.send_message(channel, "Command for developers only.")
+            
 #-------------------------------- Client Run --------------------------------#
 
 client.run("NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0")
