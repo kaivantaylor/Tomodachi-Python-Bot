@@ -15,7 +15,7 @@ command = commands.Bot(command_prefix = "!") # All prefix starts with "!"
 
 #------------------------------------- channel variables ------------------------------------------------#
 
-channel_mode = 9 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
+channel_mode = 0 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
 token = "NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0"
 
 general_channel = discord.Object(id='471503386848788482')
@@ -58,13 +58,16 @@ async def on_message(msg):
         await client.send_message(channel, "How's your garden today?")
     
     if msg.content == "!hlaing": # Hlaing
-        await client.send_message(channel, "Such a fuckin weeb")
+        await client.send_message(channel, "Such a fuckin weeb.")
 
     if msg.content == "!elijsha": #Elijsha
-        await client.send_message(channel, "Sup mah nigga")
+        await client.send_message(channel, "Sup mah nigga.")
 
     if msg.content == "!kaivan": # Kaivan
-        await client.send_message(channel, "Plz work on me later")
+        await client.send_message(channel, "Plz work on me later.")
+        
+    if msg.content == "!devon": # Kaivan
+        await client.send_message(channel, "You play a lot of Mabinogi.")
 
     if msg.content == "!amanda": # Kaivan
         await client.send_message(channel, "Is your name rose?")
@@ -76,7 +79,7 @@ async def on_message(msg):
         await client.send_message(channel, "Marty is gay. Heh, get it.")
         
     if msg.content == "!help": # Help
-        await client.send_message(channel, "! is the prefix for every command. Available commands: marty, hlaing, elijsha, kaivan, amanda, lettuce, joke, ping, chong, tomato, dev")
+        await client.send_message(channel, "! is the prefix for every command. Available commands: marty, hlaing, elijsha, kaivan, amanda, devon, lettuce, joke, ping, chong, tomato, dev")
 
     #-------------- Developers only have these permissions below ---------------------#
         
