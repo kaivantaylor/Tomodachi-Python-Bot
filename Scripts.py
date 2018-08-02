@@ -31,5 +31,8 @@ async def on_message(msg):
         
     if msg.content == "!github":
         await client.send_message(msg.channel, "https://github.com/speedykai/Tomodachi-Python-Bot")
+        
+    if msg.content == "!help":
+        await client.send_message(msg.channel, "! is the prefix for every command. Available options: marty, hlaing, elijsha, kaivan, github")
 
 client.run("NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0")
