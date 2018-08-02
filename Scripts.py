@@ -1,4 +1,6 @@
 # Kai's Python Shit
+# Managed by Dev Team from Tomodachi Oniichans
+# Pew Pew Pew
 
 import discord
 from discord.ext.commands import Bot
