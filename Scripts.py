@@ -56,10 +56,10 @@ async def on_message(msg):
         await client.send_message(dev_channel, "https://github.com/speedykai/Tomodachi-Python-Bot")
         
     if msg.content == "!dev":
-        await client.send_message(dev_channel, "say, github")
+        await client.send_message(dev_channel, "! is the prefix for every command. Available commands: say, github")
         
     if msg.content == "!help":
-        await client.send_message(dev_channel, "! is the prefix for every command. Available options: marty, hlaing, elijsha, kaivan, joke, ping, chong, tomato")
+        await client.send_message(dev_channel, "! is the prefix for every command. Available commands: marty, hlaing, elijsha, kaivan, joke, ping, chong, tomato")
 
 client.run("NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0")
  
