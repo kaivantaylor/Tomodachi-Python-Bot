@@ -18,35 +18,39 @@ async def on_ready():
 @client.event
 async def on_message(msg):
 
+    if msg.content.upper().startswith('!SAY'):
+        _saymsg = msg.content.split(" ")
+        await client.send_message(msg.client.get_channel('general')," ".join(_saymsg[1:]))
+
     if msg.content.startswith('!ping'):
         userID = msg.author.id
-        await client.send_message(msg.channel, "<@" + userID + "> Pong!")
+        await client.send_message(msg.client.get_channel('general'), "<@" + userID + "> Pong!")
         
     if msg.content.startswith('!ching'):
         userID = msg.author.id
-        await client.send_message(msg.channel, "<@" + userID + "> Chong!")
+        await client.send_message(msg.client.get_channel('general'), "<@" + userID + "> Chong!")
 
     if msg.content.startswith('!tomato'):
         userID = msg.author.id
-        await client.send_message(msg.channel, "<@" + userID + "> tomato!")
+        await client.send_message(msg.client.get_channel('general'), "<@" + userID + "> tomato!")
     
     if msg.content == "!marty":
-        await client.send_message(msg.channel, "How's your garden today?")
+        await client.send_message(msg.client.get_channel('general'), "How's your garden today?")
     
     if msg.content == "!hlaing":
-        await client.send_message(msg.channel, "Such a fuckin weeb")
+        await client.send_message(msg.client.get_channel('general'), "Such a fuckin weeb")
 
     if msg.content == "!elijsha":
-        await client.send_message(msg.channel, "Sup mah nigga")
+        await client.send_message(msg.client.get_channel('general'), "Sup mah nigga")
 
     if msg.content == "!kaivan":
-        await client.send_message(msg.channel, "Plz work on me later")
+        await client.send_message(msg.client.get_channel('general'), "Plz work on me later")
         
     if msg.content == "!joke":
-        await client.send_message(msg.channel, "Marty is gay. Heh, get it.")
+        await client.send_message(msg.client.get_channel('general'), "Marty is gay. Heh, get it.")
         
     if msg.content == "!github":
-        await client.send_message(msg.channel, "https://github.com/speedykai/Tomodachi-Python-Bot")
+        await client.send_message(msg.client.get_channel('general'), "https://github.com/speedykai/Tomodachi-Python-Bot")
         
     if msg.content == "!help":
         await client.send_message(msg.channel, "! is the prefix for every command. Available options: marty, hlaing, elijsha, kaivan, joke, github, ping, chong, tomato")
