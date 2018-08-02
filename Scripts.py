@@ -20,40 +20,40 @@ async def on_message(msg):
 
     if msg.content.upper().startswith('!SAY'):
         _saymsg = msg.content.split(" ")
-        await client.send_message(client.get_channel('general')," ".join(_saymsg[1:]))
+        await client.send_message(discord.Object(id='471503386848788482')," ".join(_saymsg[1:]))
 
     if msg.content.startswith('!ping'):
         userID = msg.author.id
-        await client.send_message(client.get_channel('general'), "<@" + userID + "> Pong!")
+        await client.send_message(discord.Object(id='471503386848788482'), "<@" + userID + "> Pong!")
         
     if msg.content.startswith('!ching'):
         userID = msg.author.id
-        await client.send_message(client.get_channel('general'), "<@" + userID + "> Chong!")
+        await client.send_message(discord.Object(id='471503386848788482'), "<@" + userID + "> Chong!")
 
     if msg.content.startswith('!tomato'):
         userID = msg.author.id
-        await client.send_message(client.get_channel('general'), "<@" + userID + "> tomato!")
+        await client.send_message(discord.Object(id='471503386848788482'), "<@" + userID + "> tomato!")
     
     if msg.content == "!marty":
-        await client.send_message(client.get_channel('general'), "How's your garden today?")
+        await client.send_message(discord.Object(id='471503386848788482'), "How's your garden today?")
     
     if msg.content == "!hlaing":
-        await client.send_message(client.get_channel('general'), "Such a fuckin weeb")
+        await client.send_message(discord.Object(id='471503386848788482'), "Such a fuckin weeb")
 
     if msg.content == "!elijsha":
-        await client.send_message(client.get_channel('general'), "Sup mah nigga")
+        await client.send_message(discord.Object(id='471503386848788482'), "Sup mah nigga")
 
     if msg.content == "!kaivan":
-        await client.send_message(client.get_channel('general'), "Plz work on me later")
+        await client.send_message(discord.Object(id='471503386848788482'), "Plz work on me later")
         
     if msg.content == "!joke":
-        await client.send_message(client.get_channel('general'), "Marty is gay. Heh, get it.")
+        await client.send_message(discord.Object(id='471503386848788482'), "Marty is gay. Heh, get it.")
         
     if msg.content == "!github":
-        await client.send_message(client.get_channel('general'), "https://github.com/speedykai/Tomodachi-Python-Bot")
+        await client.send_message(discord.Object(id='471503386848788482'), "https://github.com/speedykai/Tomodachi-Python-Bot")
         
     if msg.content == "!help":
-        await client.send_message(client.get_channel('general'), "! is the prefix for every command. Available options: marty, hlaing, elijsha, kaivan, joke, github, ping, chong, tomato")
+        await client.send_message(discord.Object(id='471503386848788482'), "! is the prefix for every command. Available options: marty, hlaing, elijsha, kaivan, joke, github, ping, chong, tomato")
 
 client.run("NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0")
  
