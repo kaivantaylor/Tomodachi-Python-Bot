@@ -17,16 +17,19 @@ async def on_ready():
 
 @client.event
 async def on_message(msg):
-    if msg.content == "marty":
+    if msg.content == "!marty":
         await client.send_message(msg.channel, "How's your garden today?")
     
-    if msg.content == "hlaing":
+    if msg.content == "!hlaing":
         await client.send_message(msg.channel, "Such a fuckin weeb")
 
-    if msg.content == "elijsha":
+    if msg.content == "!elijsha":
         await client.send_message(msg.channel, "Sup mah nigga")
 
-    if msg.content == "kaivan":
+    if msg.content == "!kaivan":
         await client.send_message(msg.channel, "Plz work on me later")
+        
+    if msg.content == "!github":
+        await client.send_message(msg.channel, "https://github.com/speedykai/Tomodachi-Python-Bot")
 
 client.run("NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0")
