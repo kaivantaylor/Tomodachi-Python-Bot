@@ -21,7 +21,7 @@ token = "NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0"
 general_channel = discord.Object(id='471503386848788482')
 spam_channel = discord.Object(id='471509338834337803')
 dev_channel = discord.Object(id='474468483749380096')
-chat_filter = ["FUCK","SHIT","BITCH","NIGGA","HOE","SLUT"] # Must be all CAPS
+chat_filter = ["FUCK","SHIT","BITCH","NIGGA","HOE","SLUT", "CUNT"] # Must be all CAPS
 
 #------------------------------------ client events -----------------------------------------------#
 
@@ -32,7 +32,7 @@ elif channel_mode == 1:
 else:
     channel = dev_channel
 
-@client.event # Used for boot of server
+@client.event # Used for boot of server\
 async def on_ready():
     print("Kai Bot is on the server!")
     await client.send_message(dev_channel, "Kaerimasu. Kai Bot is online!")
@@ -66,13 +66,13 @@ async def on_message(msg):
     if msg.content == "!kaivan": # Kaivan
         await client.send_message(channel, "Plz work on me later.")
         
-    if msg.content == "!devon": # Kaivan
+    if msg.content == "!devon": # Devon
         await client.send_message(channel, "You play a lot of Mabinogi.")
 
-    if msg.content == "!amanda": # Kaivan
+    if msg.content == "!amanda": # Amanda
         await client.send_message(channel, "Is your name rose?")
 
-    if msg.content == "!lettuce": # Kaivan
+    if msg.content == "!lettuce": # Lettuce
         await client.send_message(channel, "Why is a vegetable talking to me?")
         
     if msg.content == "!joke": # Joke
