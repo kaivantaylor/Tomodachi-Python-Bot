@@ -10,11 +10,11 @@ import time
 import youtube_dl
 from discord.ext import commands
 
-client = commands.Bot(command_prefix = "!") # All prefix starts with "!"
-
 #------------------------------------- channel variables ------------------------------------------------#
 
-channel_mode = 9 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
+client = commands.Bot(command_prefix = "!") # All prefix starts with "!"
+
+channel_mode = 2 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
 token = "NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0"
 
 general_channel = discord.Object(id='471503386848788482')
@@ -23,19 +23,21 @@ dev_channel = discord.Object(id='474468483749380096')
 
 players = {}
 
-#------------------------------------ client events -----------------------------------------------#
-
 if channel_mode == 0:
     channel = general_channel
 elif channel_mode == 1:
     channel = spam_channel
 else:
     channel = dev_channel
+    
+#------------------------------------ client event for startup -----------------------------------------------#
 
 @client.event # Used for boot of server
 async def on_ready():
     print("Kai Bot is on the server!")
     await client.send_message(dev_channel, "Kaerimasu. Kai Bot is online!")
+
+#------------------------------------ client event for music player -----------------------------------------------#
 
 @client.command(pass_context = True)
 async def join(ctx):
@@ -71,7 +73,7 @@ async def pause(ctx):
     id = ctx.message.server.id
     players[id].resume()
     
-#-------------------------------- Client Run --------------------------------#
+#-------------------------------- client run --------------------------------#
 
 client.run(token)
  
