@@ -65,6 +65,11 @@ async def stop(ctx):
 async def pause(ctx):
     id = ctx.message.server.id
     players[id].pause()
+
+@client.command(pass_context = True)
+async def pause(ctx):
+    id = ctx.message.server.id
+    players[id].resume()
     
 #-------------------------------- Client Run --------------------------------#
 
