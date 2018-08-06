@@ -22,6 +22,13 @@ spam_channel = discord.Object(id='471509338834337803')
 dev_channel = discord.Object(id='474468483749380096')
 
 players = {}
+queues = {}
+
+def check_queues(id):
+    if queues[id] != []:
+        player = queues[id].pop(0)
+        players[id] = player
+        player.start()
 
 if channel_mode == 0:
     channel = general_channel
@@ -54,7 +61,7 @@ async def leave(ctx):
 async def play(ctx, url):
     server = ctx.message.server
     voice_client = client.voice_client_in(server)
-    player = await voice_client.create_ytdl_player(url)
+    player = await voice_client.create_ytdl_player(url, after=lambda: check_queue(server.id))
     players[server.id] = player
     player.start()
 
@@ -69,9 +76,22 @@ async def pause(ctx):
     players[id].pause()
 
 @client.command(pass_context = True)
-async def pause(ctx):
+async def resume(ctx):
     id = ctx.message.server.id
     players[id].resume()
+
+@client.command(pass_context = True)
+async def queue(ctx, url):
+    server = ctx.message.server
+    voice_client = client.voice_client_in(server)
+    player = await voice_client.create_ytdl_player(url)
+
+    if server.id in queues:
+        queues[server.id].append(player)
+    else:
+        queues[server.id] = [player]
+    await client.say('Video queued.')
+    
     
 #-------------------------------- client run --------------------------------#
 
