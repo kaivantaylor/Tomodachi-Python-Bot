@@ -14,7 +14,7 @@ from discord.ext import commands
 
 client = commands.Bot(command_prefix = "!") # All prefix starts with "!"
 
-channel_mode = 2 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
+channel_mode = 0 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
 token = "NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0"
 
 general_channel = discord.Object(id='471503386848788482')
@@ -29,13 +29,6 @@ def check_queues(id):
         player = queues[id].pop(0)
         players[id] = player
         player.start()
-
-if channel_mode == 0:
-    channel = general_channel
-elif channel_mode == 1:
-    channel = spam_channel
-else:
-    channel = dev_channel
     
 #------------------------------------ client event for startup -----------------------------------------------#
 
@@ -44,10 +37,10 @@ async def on_ready():
     print("Kai Bot is on the server!")
     await client.send_message(dev_channel, "Kaerimasu. Kai Bot is online!")
 
-#------------------------------------ client event for music player -----------------------------------------------#
+#------------------------------------ client command for music player -----------------------------------------------#
 
 @client.command(pass_context = True)
-async def join(ctx):
+async def summon(ctx):
     channel = ctx.message.author.voice.voice_channel
     await client.join_voice_channel(channel)
 
@@ -93,7 +86,27 @@ async def queue(ctx, url):
     await client.say('Video queued.')
     
     
-#-------------------------------- client run --------------------------------#
+#-------------------------------- client command for replies --------------------------------#
+@client.command()
+async def help():
+    await client.say('"!" is the prefix for all commands. Available Commands: ping, echo, musicbot')
+    
+@client.command()
+async def musicbot():
+    await client.say('Must be in a voice channel. Use !summon and !leave to move bot into channel. Available commands: play, stop, pause, resume, queue')
 
+@client.command()
+async def ping():
+    await client.say('Pong!')
+
+@client.command()
+async def echo(*args):
+    output = ''
+    for word in args:
+        output += word
+        output += ' '
+    await client.say(output)
+
+#-------------------------------- client run --------------------------------#
 client.run(token)
  
