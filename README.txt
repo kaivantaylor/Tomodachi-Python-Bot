@@ -12,3 +12,5 @@ Add "C:\ffmpeg\bin" to your path and press okay.
 Now you should be able to run the server with the music bot. Just double click the "Kai_Bot" .py program, or run in IDLE. You can check if
 ffmpeg works by running command prompt and typing "ffmpeg -version".
 
+python -m pip install -U discord.py[voice] =======> Open in cmd and run.
+
