@@ -15,27 +15,37 @@ from itertools import cycle
 client = commands.Bot(command_prefix = "!") # All prefix starts with "!"
 
 CHANNEL_MODE = 0 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
-TOKEN = "NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0"
+TOKEN = "NDc2NjMwNjAwODEyNDYyMDgw.DkwYkQ._EWfSmLXvVno1fOrfyrOKNR1XFo"
 
 GENERAL_CHANNEL = discord.Object(id='471503386848788482')
 SPAM_CHANNEL = discord.Object(id='471509338834337803')
 DEV_CHANNEL = discord.Object(id='474468483749380096')
 
+STATUS = ['!bothelp','!musicbot','<3']
+
 PLAYERS = {}
 QUEUES = {}
     
 #------------------------------------ client event for startup -----------------------------------------------#
+@client.event
+async def change_status():
+    await client.wait_until_ready()
+    msgs = cycle(STATUS)
+
+    while not client.is_closed:
+        current_status = next(msgs)
+        await client.change_presence(game = discord.Game(name = current_status))
+        await asyncio.sleep(5)
 
 @client.event # Used for boot of server
 async def on_ready():
-    print("Kai Bot is on the server!")
-    await client.send_message(DEV_CHANNEL, "Kaerimasu. Kai Bot is online!")
-    await client.change_presence(game = discord.Game(name = '!bothelp'))
+    print("Kouhai is on the server!")
+    await client.send_message(DEV_CHANNEL, "Osuuu. Kouhai is online!")
 
 #------------------------------------ client command for music player -----------------------------------------------#
 
-def check_queue(id):
-    if QUEUES != []:
+def check_queues(id):
+    if QUEUES[id] != []:
         PLAYERS[id] = player
         player = QUEUES[id].pop(0)
         player.start()
@@ -55,30 +65,39 @@ async def leave(ctx):
 async def play(ctx, url):
     server = ctx.message.server
     voice_client = client.voice_client_in(server)
-    
-    if QUEUES[server.id] == []: # If there is something in the player, add to the queue and play after.
-        player = await voice_client.create_ytdl_player(url, after=lambda: check_queue(server.id))
-        QUEUES[server.id].append(player)
-        
-    else: # Nothing in queue. Add to the queue and play it
-        player = await voice_client.create_ytdl_player(url, after=lambda: check_queue(server.id))
-        PLAYERS[server.id] = player
-        player.start()
+    player = await voice_client.create_ytdl_player(url, after=lambda: check_queue(server.id))
+    player.start()
+    PLAYERS[server.id] = player
 
 @client.command(pass_context = True)
 async def stop(ctx):
     id = ctx.message.server.id
-    PLAYERS[id].stop()
+    players[id].stop()
 
 @client.command(pass_context = True)
 async def pause(ctx):
     id = ctx.message.server.id
-    PLAYERS[id].pause()
+    players[id].pause()
 
 @client.command(pass_context = True)
 async def resume(ctx):
     id = ctx.message.server.id
-    PLAYERS[id].resume()
+    players[id].resume()
+
+@client.command(pass_context = True)
+async def queue(ctx, url):
+    server = ctx.message.server
+    voice_client = client.voice_client_in(server)
+    player = await voice_client.create_ytdl_player(url)
+
+    if server.id in QUEUES:
+        QUEUES[server.id].append(player)
+    else:
+        QUEUES[server.id] = [player]
+    await client.say('Video queued.')
+
+    print(QUEUE)
+    
     
 #-------------------------------- client command for replies --------------------------------#
 @client.command()
@@ -110,5 +129,6 @@ async def echo(*args):
     await client.say(output)
 
 #-------------------------------- client run --------------------------------#
+client.loop.create_task(change_status())
 client.run(TOKEN)
  
