@@ -13,4 +13,4 @@ Now you should be able to run the server with the music bot. Just double click t
 ffmpeg works by running command prompt and typing "ffmpeg -version".
 
 python -m pip install -U discord.py[voice] =======> Open in cmd and run.
-
+python -m pip install -U youtube_dl

@@ -107,7 +107,7 @@ async def echo(*args):
     for word in args:
         output += word
         output += ' '
-    await client.say(output)
+    await client.send_messsage(GENERAL_CHAT, output)
 
 #-------------------------------- client run --------------------------------#
 client.run(TOKEN)
