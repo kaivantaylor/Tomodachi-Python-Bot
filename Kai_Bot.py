@@ -36,8 +36,8 @@ async def on_ready():
 
 def check_queue(id):
     if QUEUES != []:
-        PLAYERS[id] = player
         player = QUEUES[id].pop(0)
+        PLAYERS[id] = player
         player.start()
         
 @client.command(pass_context = True)
@@ -55,15 +55,13 @@ async def leave(ctx):
 async def play(ctx, url):
     server = ctx.message.server
     voice_client = client.voice_client_in(server)
-    
-    if QUEUES[server.id] == []: # If there is something in the player, add to the queue and play after.
-        player = await voice_client.create_ytdl_player(url, after=lambda: check_queue(server.id))
-        QUEUES[server.id].append(player)
-        
-    else: # Nothing in queue. Add to the queue and play it
-        player = await voice_client.create_ytdl_player(url, after=lambda: check_queue(server.id))
+    player = await voice_client.create_ytdl_player(url, after=lambda: check_queue(server.id))
+
+    if PLAYERS == {}:
         PLAYERS[server.id] = player
         player.start()
+    else:
+        QUEUES[server.id] = player
 
 @client.command(pass_context = True)
 async def stop(ctx):
