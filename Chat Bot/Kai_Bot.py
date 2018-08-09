@@ -15,14 +15,14 @@ from itertools import cycle
 client = commands.Bot(command_prefix = "!") # All prefix starts with "!"
 
 CHANNEL_MODE = 0 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
-TOKEN = "NDc0NDU4MTg3NDYzMDAwMDY0.DkQ3bA.f8mr9vy5Jh090JyW1hXsxqlg6B0"
+TOKEN = "NDc0NDU4MTg3NDYzMDAwMDY0.Dk4ftw.y60mWF0DZ5X4i2otX5onAEAc5GU"
 
 GENERAL_CHANNEL = discord.Object(id='471503386848788482')
 SPAM_CHANNEL = discord.Object(id='471509338834337803')
 DEV_CHANNEL = discord.Object(id='474468483749380096')
 
-PLAYERS = {}
-QUEUES = {}
+PLAYERS = []
+QUEUES = []
     
 #------------------------------------ client event for startup -----------------------------------------------#
 
@@ -35,10 +35,10 @@ async def on_ready():
 #------------------------------------ client command for music player -----------------------------------------------#
 
 def check_queue(id):
-    if QUEUES != []:
-        player = QUEUES[id].pop(0)
-        PLAYERS[id] = player
-        player.start()
+    player = QUEUES.pop(0)
+    PLAYERS = player
+    player.start()
+    PLAYERS.pop(0)
         
 @client.command(pass_context = True)
 async def summon(ctx):
@@ -50,33 +50,58 @@ async def leave(ctx):
     server = ctx.message.server
     voice_client = client.voice_client_in(server)
     await voice_client.disconnect()
-
+    
 @client.command(pass_context = True)
 async def play(ctx, url):
-    server = ctx.message.server
-    voice_client = client.voice_client_in(server)
-    player = await voice_client.create_ytdl_player(url, after=lambda: check_queue(server.id))
+    opts =  {
+            'default_search': 'auto',
+            'quiet': True,
+            }
+    try:
+        server = ctx.message.server
+        voice_client = client.voice_client_in(server)
+        player = await voice_client.create_ytdl_player(url, ytdl_options=opts, after = lambda:check_queue(server.id))
 
-    if PLAYERS == {}:
-        PLAYERS[server.id] = player
-        player.start()
-    else:
-        QUEUES[server.id] = player
+        if PLAYERS == []:
+            PLAYERS.append(player)
+            player.start()
+        else:
+            QUEUES.append(player)
+            
+    except Exception as e:
+        print("Not a valid link.")
 
 @client.command(pass_context = True)
 async def stop(ctx):
-    id = ctx.message.server.id
-    PLAYERS[id].stop()
+    player = PLAYERS[0]
+    player.stop()
 
 @client.command(pass_context = True)
 async def pause(ctx):
-    id = ctx.message.server.id
-    PLAYERS[id].pause()
-
+    player = PLAYERS[0]
+    player.pause()
+    
 @client.command(pass_context = True)
 async def resume(ctx):
-    id = ctx.message.server.id
-    PLAYERS[id].resume()
+    player = PLAYERS[0]
+    player.resume()
+
+@client.command(pass_context = True)
+async def skip(ctx):
+    channel = ctx.message.channel
+    try:
+        player = PLAYERS[0]
+        player.stop()
+        PLAYERS.pop(0)
+        
+        new_player = QUEUES.pop(0)
+        PLAYERS.append(new_player)
+
+        player = PLAYERS[0]
+        player.start()
+    except Exception as e:
+        print("No song in queue.")
+        await client.send_message(channel, "No song in queue.")
     
 #-------------------------------- client command for replies --------------------------------#
 @client.command()
@@ -86,6 +111,10 @@ async def bothelp():
 @client.command()
 async def musicbot():
     await client.say('Must be in a voice channel. Use !summon and !leave to move bot into channel. Available commands: play, stop, pause, resume, queue')
+
+@client.command(pass_context = True)
+async def logout(ctx):
+    await client.logout()
 
 @client.command(pass_context = True)
 async def clear(ctx, amount = 10):

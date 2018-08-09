@@ -1,4 +1,4 @@
-# Kaivan Taylor
+- v# Kaivan Taylor
 # Managed by Dev Team from Tomodachi Oniichans
 # Pew Pew Pew Pew PEw PEw PEw PEwwwww pewdiepie
 
@@ -12,7 +12,7 @@ from itertools import cycle
 
 #------------------------------------- channel variables ------------------------------------------------#
 
-client = commands.Bot(command_prefix = "!") # All prefix starts with "!"
+client = commands.Bot(command_prefix = "?") # All prefix starts with "!"
 
 CHANNEL_MODE = 0 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
 TOKEN = "NDc2NjMwNjAwODEyNDYyMDgw.Dk1BzA._pC-wOD2hWbjKl0loqF46CdVguo"
@@ -21,7 +21,7 @@ GENERAL_CHANNEL = discord.Object(id='471503386848788482')
 SPAM_CHANNEL = discord.Object(id='471509338834337803')
 DEV_CHANNEL = discord.Object(id='474468483749380096')
 
-STATUS = ['!bothelp','!musicbot','<3']
+STATUS = ['?bothelp','?musicbot','<3']
 
 PLAYERS = {}
 QUEUES = {}
@@ -72,17 +72,18 @@ async def play(ctx, url):
 @client.command(pass_context = True)
 async def stop(ctx):
     id = ctx.message.server.id
-    players[id].stop()
-
+    PLAYERS[id].stop()
+    
 @client.command(pass_context = True)
 async def pause(ctx):
     id = ctx.message.server.id
-    players[id].pause()
+    PLAYERS[id].pause()
+    print(PLAYERS[id])
 
 @client.command(pass_context = True)
 async def resume(ctx):
     id = ctx.message.server.id
-    players[id].resume()
+    PLAYERS[id].resume()
 
 @client.command(pass_context = True)
 async def queue(ctx, url):
