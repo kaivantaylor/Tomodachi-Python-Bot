@@ -12,7 +12,8 @@
 | Contact for more information:
 | @discord - Kai #3286
 | @github - speedykai
-|                                                                                                                        
+|
+| Refer to the Discord API guide for help: https://discordapp.com/developers/docs/intro
 |---------------------------------------------------------------------------------------------------------------------------------------
 | To start programming for the server you need the following: 													     
 |---------------------------------------------------------------------------------------------------------------------------------------
