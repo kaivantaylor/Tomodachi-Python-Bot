@@ -30,7 +30,7 @@
 | Installing "youtube_dl" and "discord" modules
 | 1. In console/command prompt, type in:
 | 	python -m pip install -U discord.py[voice]
-|	python -m pip install -U youtube_dl
+|	  python -m pip install -U youtube_dl
 |
 | Git Bash
 | 1. Please download Git Bash using the following link: https://www.python.org/downloads/https://git-scm.com/downloads
