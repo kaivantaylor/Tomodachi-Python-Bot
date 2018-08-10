@@ -1,6 +1,6 @@
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-|                                                           Welcome to the README for Kai_Bot!	                                                                     
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|---------------------------------------------------------------------------------------------------------------------------------------
+|                                                           Welcome to the README for Kai_Bot!	                                
+|---------------------------------------------------------------------------------------------------------------------------------------
 |										                                                                                     
 | This discord bot serves the purpose to respond to commands, and play music. Further futures are being implemented.
 |
@@ -10,16 +10,16 @@
 | @discord - Kai #3286
 | @github - speedykai
 |                                                                                                                        
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|---------------------------------------------------------------------------------------------------------------------------------------
 | To start programming for the server you need the following: 													     
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|---------------------------------------------------------------------------------------------------------------------------------------
 | 1. Python 3.5+
 | 2. Git Bash
 | 3. Discord ("youtube_dl" and "discord" modules)
 | 4. ffmpeg
 | 5. Notepad ++ (Optional, but useful)
 |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|---------------------------------------------------------------------------------------------------------------------------------------
 | Instructions
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Python 3.5+
@@ -41,7 +41,7 @@
 | ** Basic Comands for Git Bash
 |	git init . -> Creates a hidden ".git" file and initilizes a new repository
 |	git clone <github URL> -> Clones the given URL's files to your local folder that was selected
-|	git add . OR git add * OR git add <filename> -> Adds files to github repository (Note: "git commit" and "git push" is needed to updat the repository.)
+|	git add . OR git add * OR git add <filename> -> Adds files to github repository (Note: "git commit" and "git push" is needed to updat | the repository.)
 |	git commit -m "your comment here" -> Adds a comment for the added/changed files
 |	git push origin master -> Pushes the new changes and comment to the specified github repository.
 |	git pull origin master -> Updates files and fetches new changes from the speicifed github repository.
@@ -70,4 +70,4 @@
 | 1. Downloading Notepad ++ is optional, however is a great utility to have. This program has more functionality than Python's IDLE. 
 | 2. To download, please use the following link: https://notepad-plus-plus.org/download/v7.5.8.html
 |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|---------------------------------------------------------------------------------------------------------------------------------------
