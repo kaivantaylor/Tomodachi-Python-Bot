@@ -229,3 +229,6 @@ class Music:
             skip_count = len(state.skip_votes)
             await self.client.say('Now playing {} [skips: {}/3]'.format(state.current, skip_count))
             
+def setup(client):
+    client.add_cog(Music(client))
+    print('Music is loaded')

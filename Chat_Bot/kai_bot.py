@@ -4,6 +4,7 @@
 
 # --------------------------------------- module imports -------------------------------------------#
 
+import oauth
 import discord
 import asyncio
 import youtube_dl
@@ -15,7 +16,6 @@ from itertools import cycle
 client = commands.Bot(command_prefix = "!") # All prefix starts with "!"
 
 CHANNEL_MODE = 0 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
-TOKEN = "NDc0NDU4MTg3NDYzMDAwMDY0.Dk4ftw.y60mWF0DZ5X4i2otX5onAEAc5GU"
 
 GENERAL_CHANNEL = discord.Object(id='471503386848788482')
 SPAM_CHANNEL = discord.Object(id='471509338834337803')
@@ -39,85 +39,92 @@ async def on_error(event, *args, **kwargs):
     
 #---------------------------------------- music player --------------------------------------------------#
 
-def check_queue(id):
-    player = QUEUES.pop(0)
-    PLAYERS = player
-    player.start()
-    PLAYERS.pop(0)
-        
-@client.command(pass_context = True)
-async def summon(ctx):
-    channel = ctx.message.author.voice.voice_channel
-    await client.join_voice_channel(channel)
+startup_extensions = ["music_bot"]
 
-@client.command(pass_context = True)
-async def leave(ctx):
-    server = ctx.message.server
-    voice_client = client.voice_client_in(server)
-    await voice_client.disconnect()
+if __name__ == "__main__":
+    for extension in startup_extensions:
+        client.load_extension(extension)
 
-@client.command(pass_context = True)
-async def volume(ctx, volume):
-    if PLAYERS != []:
-        volume = int(volume)
-        player = PLAYERS[0]
-        player.volume = volume / 100
-        await client.say('Set the volume to {}%'.format(volume))
-    
-@client.command(pass_context = True)
-async def play(ctx, url):
-    opts =  {
-            'default_search': 'auto',
-            'quiet': True,
-            }
-    try:
-        server = ctx.message.server
-        voice_client = client.voice_client_in(server)
-        player = await voice_client.create_ytdl_player(url, ytdl_options=opts, after = lambda:check_queue(server.id))
-
-        if PLAYERS == []:
-            PLAYERS.append(player)
-            player.start()
-        else:
-            QUEUES.append(player)
-            
-    except Exception as e:
-        print("Not a valid link.")
-
-@client.command(pass_context = True)
-async def stop(ctx):
-    if PLAYERS != []:
-        player = PLAYERS[0]
-        player.stop()
-    else:
-        pass
-@client.command(pass_context = True)
-async def pause(ctx):
-    if PLAYERS != []:
-        player = PLAYERS[0]
-        player.pause()
-@client.command(pass_context = True)
-async def resume(ctx):
-    if PLAYERS != []:
-        player = PLAYERS[0]
-        player.resume()
-
-@client.command(pass_context = True)
-async def skip(ctx):
-    channel = ctx.message.channel
-    try:
-        player = PLAYERS[0]
-        player.stop()
-        PLAYERS.pop(0)
-        
-        new_player = QUEUES.pop(0)
-        PLAYERS.append(new_player)
-
-        player = PLAYERS[0]
-        player.start()
-    except Exception as e:
-        print("No song in queue.")
-        await client.send_message(channel, "No song in queue.")
+##
+##def check_queue(id):
+##    player = QUEUES.pop(0)
+##    PLAYERS = player
+##    player.start()
+##    PLAYERS.pop(0)
+##        
+##@client.command(pass_context = True)
+##async def summon(ctx):
+##    channel = ctx.message.author.voice.voice_channel
+##    await client.join_voice_channel(channel)
+##
+##@client.command(pass_context = True)
+##async def leave(ctx):
+##    server = ctx.message.server
+##    voice_client = client.voice_client_in(server)
+##    await voice_client.disconnect()
+##
+##@client.command(pass_context = True)
+##async def volume(ctx, volume):
+##    if PLAYERS != []:
+##        volume = int(volume)
+##        player = PLAYERS[0]
+##        player.volume = volume / 100
+##        await client.say('Set the volume to {}%'.format(volume))
+##    
+##@client.command(pass_context = True)
+##async def play(ctx, url):
+##    opts =  {
+##            'default_search': 'auto',
+##            'quiet': True,
+##            }
+##    try:
+##        server = ctx.message.server
+##        voice_client = client.voice_client_in(server)
+##        player = await voice_client.create_ytdl_player(url, ytdl_options=opts, after = lambda:check_queue(server.id))
+##
+##        if PLAYERS == []:
+##            PLAYERS.append(player)
+##            player.start()
+##        else:
+##            QUEUES.append(player)
+##            
+##    except Exception as e:
+##        print("Not a valid link.")
+##
+##@client.command(pass_context = True)
+##async def stop(ctx):
+##    if PLAYERS != []:
+##        player = PLAYERS[0]
+##        player.stop()
+##    else:
+##        pass
+##@client.command(pass_context = True)
+##async def pause(ctx):
+##    if PLAYERS != []:
+##        player = PLAYERS[0]
+##        player.pause()
+##@client.command(pass_context = True)
+##async def resume(ctx):
+##    if PLAYERS != []:
+##        player = PLAYERS[0]
+##        player.resume()
+##
+##@client.command(pass_context = True)
+##async def skip(ctx):
+##    channel = ctx.message.channel
+##    try:
+##        player = PLAYERS[0]
+##        player.stop()
+##        PLAYERS.pop(0)
+##        
+##        new_player = QUEUES.pop(0)
+##        PLAYERS.append(new_player)
+##
+##        player = PLAYERS[0]
+##        player.start()
+##    except Exception as e:
+##        print("No song in queue.")
+##        await client.send_message(channel, "No song in queue.")
     
 #--------------------------------------------------- commands ---------------------------------------------------------#
 
@@ -157,5 +164,5 @@ async def echo(*args):
     await client.send_messsage(GENERAL_CHAT, output)
 
 #-------------------------------- client run --------------------------------#
-client.run(TOKEN)
+client.run(oauth.TOKEN)
  
