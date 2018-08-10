@@ -30,7 +30,7 @@ QUEUES = []
 async def on_ready():
     print("Kai Bot is on the server!")
     await client.send_message(DEV_CHANNEL, "Kaerimasu. Kai Bot is online!")
-    await client.change_presence(game = discord.Game(name = '!bothelp'))
+    await client.change_presence(game = discord.Game(name = '!help'))
 
 @client.event
 async def on_error(event, *args, **kwargs):
