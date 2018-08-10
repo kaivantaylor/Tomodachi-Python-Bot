@@ -4,7 +4,7 @@
 |										                                                                                     
 | This discord bot serves the purpose to respond to commands, and play music. Further futures are being implemented.
 |
-| DISCLAIMER: This bot is used for recreational purposes and personal usage.
+| DISCLAIMER: This bot is used for recreational purposes and personal use.
 |
 | Contact for more information:
 | @discord - Kai #3286
