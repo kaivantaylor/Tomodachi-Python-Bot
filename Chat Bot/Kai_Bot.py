@@ -24,7 +24,7 @@ DEV_CHANNEL = discord.Object(id='474468483749380096')
 PLAYERS = []
 QUEUES = []
     
-#------------------------------------ client event for startup -----------------------------------------------#
+#--------------------------------------- startup --------------------------------------------------#
 
 @client.event # Used for boot of server
 async def on_ready():
@@ -32,7 +32,12 @@ async def on_ready():
     await client.send_message(DEV_CHANNEL, "Kaerimasu. Kai Bot is online!")
     await client.change_presence(game = discord.Game(name = '!bothelp'))
 
-#------------------------------------ client command for music player -----------------------------------------------#
+@client.event
+async def on_error(event, *args, **kwargs):
+    message = args[0] #Gets the message object
+    logging.warning(traceback.format_exc()) #logs the error
+    
+#---------------------------------------- music player --------------------------------------------------#
 
 def check_queue(id):
     player = QUEUES.pop(0)
@@ -50,6 +55,14 @@ async def leave(ctx):
     server = ctx.message.server
     voice_client = client.voice_client_in(server)
     await voice_client.disconnect()
+
+@client.command(pass_context = True)
+async def volume(ctx, volume):
+    if PLAYERS != []:
+        volume = int(volume)
+        player = PLAYERS[0]
+        player.volume = volume / 100
+        await client.say('Set the volume to {}%'.format(volume))
     
 @client.command(pass_context = True)
 async def play(ctx, url):
@@ -73,18 +86,21 @@ async def play(ctx, url):
 
 @client.command(pass_context = True)
 async def stop(ctx):
-    player = PLAYERS[0]
-    player.stop()
-
+    if PLAYERS != []:
+        player = PLAYERS[0]
+        player.stop()
+    else:
+        pass
 @client.command(pass_context = True)
 async def pause(ctx):
-    player = PLAYERS[0]
-    player.pause()
-    
+    if PLAYERS != []:
+        player = PLAYERS[0]
+        player.pause()
 @client.command(pass_context = True)
 async def resume(ctx):
-    player = PLAYERS[0]
-    player.resume()
+    if PLAYERS != []:
+        player = PLAYERS[0]
+        player.resume()
 
 @client.command(pass_context = True)
 async def skip(ctx):
@@ -103,14 +119,18 @@ async def skip(ctx):
         print("No song in queue.")
         await client.send_message(channel, "No song in queue.")
     
-#-------------------------------- client command for replies --------------------------------#
+#--------------------------------------------------- commands ---------------------------------------------------------#
+
 @client.command()
 async def bothelp():
-    await client.say('"!" is the prefix for all commands. Available Commands: ping, echo, musicbot')
+    await client.say('"!" is the prefix for all commands. Available Commands: ping, echo, musicbot, logout.')
     
 @client.command()
 async def musicbot():
-    await client.say('Must be in a voice channel. Use !summon and !leave to move bot into channel. Available commands: play, stop, pause, resume, queue')
+    await client.say(
+'''Must be in a voice channel. Use !summon and !leave to move bot into channel.
+Available commands: play, stop, pause, resume, queue, skip, volume.
+''')
 
 @client.command(pass_context = True)
 async def logout(ctx):
