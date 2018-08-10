@@ -4,8 +4,11 @@
 |										                                                                                     
 | This discord bot serves the purpose to respond to commands, and play music. Further futures are being implemented.
 |
-| DISCLAIMER: This bot is used for recreational purposes and personal use.
-|
+| DISCLAIMER: 
+| This bot is used for recreational purposes and personal use.
+| Credit to @YetiGuy! from Youtube for the Music.py as used for reference/example
+| Link for YetiGuy!: https://www.youtube.com/channel/UCkPxP6J6LPBm6Ce-XAeojXQ
+| 
 | Contact for more information:
 | @discord - Kai #3286
 | @github - speedykai
