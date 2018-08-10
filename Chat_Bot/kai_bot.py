@@ -46,13 +46,9 @@ if __name__ == "__main__":
         client.load_extension(extension)
     
 #--------------------------------------------------- commands ---------------------------------------------------------#
-
+        
 @client.command()
-async def bothelp():
-    await client.say('"!" is the prefix for all commands. Available Commands: ping, echo, musicbot, logout.')
-
-@client.command(pass_context = True)
-async def logout(ctx):
+async def logout():
     await client.logout()
 
 @client.command(pass_context = True)
@@ -73,7 +69,7 @@ async def echo(*args):
     for word in args:
         output += word
         output += ' '
-    await client.send_messsage(GENERAL_CHAT, output)
+    await client.send_message(GENERAL_CHANNEL, output)
 
 #-------------------------------- client run --------------------------------#
 client.run(oauth.TOKEN)
