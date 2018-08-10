@@ -44,7 +44,7 @@
 | ** Basic Comands for Git Bash
 |	git init . -> Creates a hidden ".git" file and initilizes a new repository
 |	git clone <github URL> -> Clones the given URL's files to your local folder that was selected
-|	git add . OR git add * OR git add <filename> -> Adds files to github repository (Note: "git commit" and "git push" is needed to updat | the repository.)
+|	git add . OR git add * OR git add <filename> -> Adds files to github repository (Note: "git commit" and "git push" is needed to update the repository.)
 |	git commit -m "your comment here" -> Adds a comment for the added/changed files
 |	git push origin master -> Pushes the new changes and comment to the specified github repository.
 |	git pull origin master -> Updates files and fetches new changes from the speicifed github repository.
