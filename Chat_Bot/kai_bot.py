@@ -50,13 +50,6 @@ if __name__ == "__main__":
 @client.command()
 async def bothelp():
     await client.say('"!" is the prefix for all commands. Available Commands: ping, echo, musicbot, logout.')
-    
-@client.command()
-async def musicbot():
-    await client.say(
-'''Must be in a voice channel. Use !summon and !leave to move bot into channel.
-Available commands: play, stop, pause, resume, queue, skip, volume.
-''')
 
 @client.command(pass_context = True)
 async def logout(ctx):
