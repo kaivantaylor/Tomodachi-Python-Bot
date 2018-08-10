@@ -17,9 +17,10 @@ client = commands.Bot(command_prefix = "!") # All prefix starts with "!"
 
 CHANNEL_MODE = 0 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
 
-GENERAL_CHANNEL = discord.Object(id='471503386848788482')
-SPAM_CHANNEL = discord.Object(id='471509338834337803')
-DEV_CHANNEL = discord.Object(id='474468483749380096')
+
+GENERAL_CHANNEL = discord.Object(id='477483558324273164')
+SPAM_CHANNEL = discord.Object(id='477483558324273164')
+DEV_CHANNEL = discord.Object(id='477483558324273164')
 
 PLAYERS = []
 QUEUES = []
@@ -29,6 +30,7 @@ QUEUES = []
 @client.event # Used for boot of server
 async def on_ready():
     print("Kai Bot is on the server!")
+
     await client.send_message(DEV_CHANNEL, "Kaerimasu. Kai Bot is online!")
     await client.change_presence(game = discord.Game(name = '!help'))
 
