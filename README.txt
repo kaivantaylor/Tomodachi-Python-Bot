@@ -1,5 +1,5 @@
 |---------------------------------------------------------------------------------------------------------------------------------------
-|                                                           Welcome to the README for Kai_Bot!	                                
+|                                                      Welcome to the README for Kai_Bot!	                                
 |---------------------------------------------------------------------------------------------------------------------------------------
 |										                                                                                     
 | This discord bot serves the purpose to respond to commands, and play music. Further futures are being implemented.
