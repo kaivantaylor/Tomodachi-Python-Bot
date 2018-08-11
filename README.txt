@@ -15,7 +15,7 @@
 |
 | Refer to the Discord API guide for help: https://discordapp.com/developers/docs/intro
 |
-| Open kai_bot.py in order to start chat bot.
+| 
 |---------------------------------------------------------------------------------------------------------------------------------------
 | To start programming for the server you need the following: 													     
 |---------------------------------------------------------------------------------------------------------------------------------------
