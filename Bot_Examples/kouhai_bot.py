@@ -15,7 +15,7 @@ from itertools import cycle
 client = commands.Bot(command_prefix = "?") # All prefix starts with "!"
 
 CHANNEL_MODE = 0 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
-TOKEN = "NDc2NjMwNjAwODEyNDYyMDgw.Dk1BzA._pC-wOD2hWbjKl0loqF46CdVguo"
+TOKEN = ""
 
 GENERAL_CHANNEL = discord.Object(id='471503386848788482')
 SPAM_CHANNEL = discord.Object(id='471509338834337803')
