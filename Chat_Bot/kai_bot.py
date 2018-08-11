@@ -18,9 +18,7 @@ client = commands.Bot(command_prefix = "!") # All prefix starts with "!"
 CHANNEL_MODE = 0 # Change value to switch channel output for bot txt. 0 - gen, 1 - spam, 2 - dev
 
 
-GENERAL_CHANNEL = discord.Object(id='477483558324273164')
-SPAM_CHANNEL = discord.Object(id='477483558324273164')
-DEV_CHANNEL = discord.Object(id='477483558324273164')
+GENERAL_CHANNEL = discord.Object(id='477697821512826900')
 
 PLAYERS = []
 QUEUES = []
