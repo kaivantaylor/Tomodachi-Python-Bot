@@ -11,7 +11,7 @@ if not discord.opus.is_loaded():
 
 def setup(client):
     client.add_cog(Music(client))
-    print("Music cog loaded!")
+    print("Music loaded!")
 
 def __init__(self, client):
         self.client = client

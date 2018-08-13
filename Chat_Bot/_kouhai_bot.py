@@ -34,7 +34,7 @@ if __name__ == "__main__":
 @client.event # Used for boot of server
 async def on_ready():
     print("Kai Bot is on the server!")
-
+    print("\n"+ "-" * 100)
     await client.send_message(GENERAL_CHANNEL, "Kaerimasu. Kai Bot is online!")
     await client.change_presence(game = discord.Game(name = '!help'))
 
