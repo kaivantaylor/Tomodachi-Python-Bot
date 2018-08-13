@@ -22,6 +22,15 @@ GENERAL_CHANNEL = discord.Object(id='477697821512826900')
 
 PLAYERS = []
 QUEUES = []
+
+#------------------------------------- extensions ------------------------------------------------#
+
+
+startup_extensions = ["music_bot","commands"]
+
+if __name__ == "__main__":
+    for extension in startup_extensions:
+        client.load_extension(extension)
     
 #--------------------------------------- startup --------------------------------------------------#
 
@@ -29,47 +38,13 @@ QUEUES = []
 async def on_ready():
     print("Kai Bot is on the server!")
 
-    await client.send_message(DEV_CHANNEL, "Kaerimasu. Kai Bot is online!")
+    await client.send_message(GENERAL_CHANNEL, "Kaerimasu. Kai Bot is online!")
     await client.change_presence(game = discord.Game(name = '!help'))
 
 @client.event
 async def on_error(event, *args, **kwargs):
     message = args[0] #Gets the message object
     logging.warning(traceback.format_exc()) #logs the error
-    
-#---------------------------------------- music player --------------------------------------------------#
-
-startup_extensions = ["music_bot"]
-
-if __name__ == "__main__":
-    for extension in startup_extensions:
-        client.load_extension(extension)
-    
-#--------------------------------------------------- commands ---------------------------------------------------------#
-        
-@client.command()
-async def logout():
-    await client.logout()
-
-@client.command(pass_context = True)
-async def clear(ctx, amount = 10):
-    channel = ctx.message.channel
-    messages = []
-    async for message in client.logs_from(channel, limit = int(amount)):
-        messages.append(message)
-    await client.delete_messages(messages)
-    
-@client.command()
-async def ping():
-    await client.say('Pong!')
-
-@client.command()
-async def echo(*args):
-    output = ''
-    for word in args:
-        output += word
-        output += ' '
-    await client.send_message(GENERAL_CHANNEL, output)
 
 #-------------------------------- client run --------------------------------#
 client.run(oauth.TOKEN)
