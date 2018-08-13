@@ -23,7 +23,7 @@ QUEUES = []
 #------------------------------------- extensions ------------------------------------------------#
 
 
-startup_extensions = ["music_bot","commands"]
+startup_extensions = ["music","commands"]
 
 if __name__ == "__main__":
     for extension in startup_extensions:
