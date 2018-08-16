@@ -11,7 +11,7 @@ if not discord.opus.is_loaded():
 
 def setup(client):
     client.add_cog(Music(client))
-    print("Music loaded!")
+    print("Music is loaded")
 
 def __init__(self, client):
         self.client = client
@@ -122,6 +122,14 @@ class Music:
             await state.voice.move_to(summoned_channel)
 
         return True
+    
+    @commands.command(pass_context=True, no_pm=True)
+    async def pause(self,ctx):
+        """Pauses the currently played song."""
+        state = self.get_voice_state(ctx.message.server)
+        if state.is_playing():
+            player = state.player
+            player.pause()
 
     @commands.command(pass_context=True, no_pm=True)
     async def play(self, ctx, *, song : str):
@@ -164,15 +172,6 @@ class Music:
             player = state.player
             player.volume = value / 100
             await self.client.say('Set the volume to {:.0%}'.format(player.volume))
-
-    @commands.command(pass_context=True, no_pm=True)
-    async def pause(self,ctx):
-        """Pauses the currently played song."""
-        state = self.get_voice_state(ctx.message.server)
-        if state.is_playing():
-            player = state.player
-            player.pause()
-        
     @commands.command(pass_context=True, no_pm=True)
     async def resume(self, ctx):
         """Resumes the currently played song."""
