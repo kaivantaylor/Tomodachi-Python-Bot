@@ -1,3 +1,6 @@
+# Music.py is dedicated to the music commands. This .py file is loaded by the
+# kouhai_bot.py which imports music as a cog.
+
 import asyncio
 import discord
 from discord.ext import commands
