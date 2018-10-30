@@ -1,9 +1,10 @@
 # Music.py is dedicated to the music commands. This .py file is loaded by the
 # kouhai_bot.py which imports music as a cog.
 
-import asyncio
+import asyncio # imported commands
 import discord
 from discord.ext import commands
+
 if not discord.opus.is_loaded():
     # the 'opus' library here is opus.dll on windows
     # or libopus.so on linux in the current directory
