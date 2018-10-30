@@ -15,7 +15,6 @@
 |
 | Refer to the Discord API guide for help: https://discordapp.com/developers/docs/intro
 |
-| 
 |---------------------------------------------------------------------------------------------------------------------------------------
 | To start programming for the server you need the following: 													     
 |---------------------------------------------------------------------------------------------------------------------------------------
@@ -73,7 +72,6 @@
 | 8. Check to see if ffmpeg is working by going into console and typing "ffmpeg --version"
 |
 | Notepad ++
-|
 | 1. Downloading Notepad ++ is optional, however is a great utility to have. This program has more functionality than Python's IDLE. 
 | 2. To download, please use the following link: https://notepad-plus-plus.org/download/v7.5.8.html
 |
