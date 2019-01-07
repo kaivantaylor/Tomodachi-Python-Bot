@@ -2,7 +2,7 @@
 |                                                      Welcome to the README for Kai_Bot!	                                
 |---------------------------------------------------------------------------------------------------------------------------------------
 |										                                                                                     
-| This discord bot serves the purpose to respond to commands, and play music. Further futures are being implemented.
+| This discord bot serves the purpose to respond to commands, and play music. Further features are being implemented.
 |
 | DISCLAIMER: 
 | This bot is used for recreational purposes and personal use.
