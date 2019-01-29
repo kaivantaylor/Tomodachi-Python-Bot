@@ -13,9 +13,9 @@ from itertools import cycle
 
 #------------------------------------- channel variables ------------------------------------------------#
 
-client = commands.Bot(command_prefix = "!") # All prefix starts with "!"
+client = commands.Bot(command_prefix = "$$") # All prefix starts with "!"
 
-GENERAL_CHANNEL = discord.Object(id='477697821512826900')
+GENERAL_CHANNEL = discord.Object(id='538567130334101505')
 
 PLAYERS = []
 QUEUES = []
@@ -36,7 +36,7 @@ async def on_ready():
     print("Kai Bot is on the server!")
     print("\n"+ "-" * 100)
     await client.send_message(GENERAL_CHANNEL, "Kaerimasu. Kai Bot is online!")
-    await client.change_presence(game = discord.Game(name = '!help'))
+    await client.change_presence(game = discord.Game(name = '$$help'))
 
 @client.event
 async def on_error(event, *args, **kwargs):

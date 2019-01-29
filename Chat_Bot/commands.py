@@ -50,6 +50,10 @@ class Commands:
             image = './images/rhinoceros.gif'
         elif rand_num == 5:
             image = './images/lipstick.gif'
+        elif rand_num == 6:
+            image = './images/finesse.gif'
+        elif rand_num == 7:
+            image = './images/i_dont_like_it.gif'
         else:
             image = './images/believe_little.gif'
         
@@ -71,5 +75,3 @@ class Commands:
                 output += word
                 output += ' '
         await self.client.send_message(GENERAL_CHANNEL, output)
-
-
