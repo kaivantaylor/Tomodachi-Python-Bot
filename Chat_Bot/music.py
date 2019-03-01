@@ -151,6 +151,7 @@ class Music:
             'default_search': 'auto',
             'quiet': True,
         }
+        beforeArgs = "-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5"
 
         if state.voice is None:
             success = await ctx.invoke(self.summon)
@@ -159,7 +160,7 @@ class Music:
                 return
 
         try:
-            player = await state.voice.create_ytdl_player(song, ytdl_options=opts, after=state.toggle_next)
+            player = await state.voice.create_ytdl_player(song, ytdl_options=opts, before_options = beforeArgs, after=state.toggle_next)
         except Exception as e:
             fmt = 'An error occurred while processing this request: ```py\n{}: {}\n```'
             await self.client.send_message(ctx.message.channel, fmt.format(type(e).__name__, e))
