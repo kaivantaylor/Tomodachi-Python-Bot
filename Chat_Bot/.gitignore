@@ -1,3 +1,4 @@
 *.pyc
 oauth.py
 __pycache__
+images
