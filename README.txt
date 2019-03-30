@@ -12,8 +12,8 @@
 | Link for YetiGuy!: https://www.youtube.com/channel/UCkPxP6J6LPBm6Ce-XAeojXQ
 | 
 | Contact for more information:
-| @discord - Kai #3286
-| @github - speedykai
+| @discord - Kai #3286 or ChloroPhil#9063
+| @github - speedykai or martyjapilado
 |
 | Refer to the Discord API guide for help: https://discordapp.com/developers/docs/intro
 |
