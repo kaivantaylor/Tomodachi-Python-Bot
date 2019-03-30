@@ -1,6 +1,6 @@
 Zeranoe FFmpeg Builds <http://ffmpeg.zeranoe.com/builds/>
 
-Build: ffmpeg-20190221-a899b3b-win64-static
+Build: ffmpeg-20190329-9dece05-win64-static
 
 Configuration:
   --enable-gpl
@@ -57,23 +57,23 @@ Libraries:
   GnuTLS            3.6.6             <https://gnutls.org/>
   libiconv          1.15              <http://gnu.org/software/libiconv>
   libass            0.14.0            <https://github.com/libass/libass>
-  dav1d             20190213-97ab829  <https://code.videolan.org/videolan/dav1d>
+  dav1d             20190324-3f2bb0d  <https://code.videolan.org/videolan/dav1d>
   libbluray         20180913-2d18c70  <https://www.videolan.org/developers/libbluray.html>
   FreeType          2.9.1             <http://freetype.sourceforge.net>
   LAME              3.100             <http://lame.sourceforge.net>
   OpenCORE AMR      20170731-07a5be4  <https://sourceforge.net/projects/opencore-amr>
   OpenJPEG          20181221-51f097e  <https://github.com/uclouvain/openjpeg>
-  Opus              20190123-9f2a0c7  <https://opus-codec.org>
+  Opus              20190301-db08296  <https://opus-codec.org>
   shine             3.1.1             <https://github.com/savonet/shine>
   Snappy            1.1.7             <https://github.com/google/snappy>
   libsoxr           20180224-945b592  <http://sourceforge.net/projects/soxr>
   Theora            20171023-e5d205b  <http://theora.org>
   TwoLAME           0.3.13            <http://twolame.org>
-  vpx               20190213-2543f37  <http://webmproject.org>
+  vpx               20190318-a7b6c45  <http://webmproject.org>
   WavPack           5.1.0             <http://wavpack.com>
   WebP              1.0.2             <https://developers.google.com/speed/webp>
-  x264              20180925-545de2f  <https://www.videolan.org/developers/x264.html>
-  x265              20190219-cb3e172  <https://bitbucket.org/multicoreware/x265/wiki/Home>
+  x264              20190306-d4099dd  <https://www.videolan.org/developers/x264.html>
+  x265              20190306-74a8672  <https://bitbucket.org/multicoreware/x265/wiki/Home>
   libxml2           2.9.8             <http://xmlsoft.org>
   z.lib             20181122-721d221  <https://github.com/sekrit-twc/zimg>
   XZ Utils          5.2.4             <http://tukaani.org/xz>
@@ -84,7 +84,7 @@ Libraries:
   libmysofa         20181220-50ee637  <https://github.com/hoene/libmysofa>
   Speex             20181021-6e04bfa  <http://speex.org>
   Xvid              1.3.5             <https://labs.xvid.com>
-  aom               20190221-cde3872  <https://aomedia.googlesource.com/aom>
+  aom               20190321-200ea98  <https://aomedia.googlesource.com/aom>
   libmfx            1.27              <https://software.intel.com/en-us/media-sdk>
   AMF               1.4.7             <https://gpuopen.com/gaming-product/advanced-media-framework>
   nv-codec-headers  20190214-cd967ef  <https://git.videolan.org/?p=ffmpeg/nv-codec-headers.git>
