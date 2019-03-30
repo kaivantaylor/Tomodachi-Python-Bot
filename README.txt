@@ -7,7 +7,7 @@
 | This discord bot serves the purpose to respond to commands, and play music. Further features are being implemented.
 |
 | DISCLAIMER: 
-| This bot is used for recreational purposes and personal use.
+| This bot is used for personal use.
 | Credit to @YetiGuy! from Youtube for the Music.py as used for reference/example
 | Link for YetiGuy!: https://www.youtube.com/channel/UCkPxP6J6LPBm6Ce-XAeojXQ
 | 
