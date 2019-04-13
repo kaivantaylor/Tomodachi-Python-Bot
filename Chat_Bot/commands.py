@@ -37,27 +37,26 @@ class Commands:
         """Kirby is here to give some Poyos
         """
         channel = ctx.message.channel
-        rand_num = random.randint(1,5)
+        rand_num = random.randint(1,8)
 
         if rand_num == 1:
             image = './images/badkirbdab.png'
         elif rand_num == 2:
-            image = './images/Minekirb.jpg'
+            image = './images/HAAAAAa.png'
         elif rand_num == 3:
-            image = './images/thick.gif'
+            image = './images/ImSorryKirbyPls.png'
         elif rand_num == 4:
-            image = './images/korb.gif'
+            image = './images/KirbGun.jpg'
         elif rand_num == 5:
-            image = './images/KirbyStahps.PNG'
+            image = './images/KirbyStahps.png'
         elif rand_num == 6:
-            image = './images/ImSorryKirbyPls.PNG'
+            image = './images/korb.gif'
         elif rand_num == 7:
-            image = './images/HAAAAAa.PNG'
+            image = './images/Minekirb.jpg'
         else:
-            self.client.send_message(GENERAL_CHANNEL, "PiKa")
-            image = './images/Pika.gif'
-        
-        await self.client.send_message(channel)
+            image = './images/Pika.jpg'
+            await self.client.say('pika!')
+                                  
         await self.client.send_file(channel, image)
 		
     @commands.command()
