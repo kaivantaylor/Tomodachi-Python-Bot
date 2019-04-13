@@ -54,7 +54,7 @@ class Commands:
         elif rand_num == 7:
             image = './images/HAAAAAa.PNG'
         else:
-			print("Pika")
+	    print("Pika")
             image = './images/Pika.gif'
         
         await self.client.send_message(channel)
