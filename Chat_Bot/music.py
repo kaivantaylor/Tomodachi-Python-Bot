@@ -158,9 +158,9 @@ class Music:
             await self.client.say("Loading the song please be patient..")
             if not success:
                 return
-
+        # ytdl_options=opts, before_options = beforeArgs
         try:
-            player = await state.voice.create_ytdl_player(song, ytdl_options=opts, before_options = beforeArgs, after=state.toggle_next)
+            player = await state.voice.create_ytdl_player(song, after=state.toggle_next)
         except Exception as e:
             fmt = 'An error occurred while processing this request: ```py\n{}: {}\n```'
             await self.client.send_message(ctx.message.channel, fmt.format(type(e).__name__, e))
