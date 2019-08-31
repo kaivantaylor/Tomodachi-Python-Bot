@@ -2,7 +2,6 @@
 |                                                      Welcome to the README for Kai_Bot!	                                
 |---------------------------------------------------------------------------------------------------------------------------------------
 |	
-| UPDATE MARCH 1, 2019 - ADDED SERVER TO ALLOW 24/7 FUNCTIONALITY. WILL BE LOOKING INTO RELEASING FOR PUBLIC USE.
 |
 | This discord bot serves the purpose to respond to commands, and play music. Further features are being implemented.
 |
